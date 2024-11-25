@@ -5,3 +5,10 @@ chown kali:kali -R ./
 Most use wordlist
 /usr/share/wordlists/dirb/big.txt
 /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+DVWA
+sudo service apache2 start 
+sudo updatedb
+locate php.ini
+sudo subl /etc/php/8.2/apache2/php.ini
+
