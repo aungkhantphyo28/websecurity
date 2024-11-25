@@ -11,4 +11,7 @@ sudo service apache2 start
 sudo updatedb
 locate php.ini
 sudo subl /etc/php/8.2/apache2/php.ini
+CREATE USER 'dvwa'@'localhost' IDENTIFIED BY 'rootme';
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'dvwa'@'localhost' WITH GRANT OPTION;
 
+create database dvwa;
