@@ -43,7 +43,7 @@ Union Base
 Error Base
 Blind Base
 
-
+----------------------------------------------------------------------------
 day 22
 burp suite pro setup guide
 
@@ -80,3 +80,11 @@ subl low.req
 put all information of the website from burp
 
 >>sqlmap -r low.req --current-db -p id
+-----------------------------------------------------------------
+day23
+Blind Base
+	-Boolean
+	-Time
+
+
+id=1' and 11<4--+&Submit=Submit
