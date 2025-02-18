@@ -3,6 +3,9 @@ https://www.youtube.com/watch?v=jRbf8BmSwhM&list=PLDYHzHv3_Uy4r6CK6trd1cV3X-X9F9
 
 Exam Guide and 2 Labs Download link at Description
 https://www.youtube.com/watch?v=WQPHTMukipE
+
+Challenge
+http://challenge01.root-me.org/web-serveur/ch25/
 sudo service apache2 status
 
 chown kali:kali -R ./
